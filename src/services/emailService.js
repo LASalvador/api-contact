@@ -14,7 +14,7 @@ const sender = nodemailer.createTransport({
 
 const sendEmail = async (req, res) => {
     if (!validateEmail(req.body.to)) {
-        res.status(400).send('Email to is invalid')
+        res.status(400).json({status: 'ERROR', message: 'Email to is invalid'})
         return
     }
     
@@ -29,10 +29,10 @@ const sendEmail = async (req, res) => {
         info = await sender.sendMail(mailOptions);
         emailMessage = "Message sent: " + info.messageId
         console.log(emailMessage);
-        res.status(200).send(emailMessage)
+        res.json({status: 'SUCESS', message: emailMessage})
     } catch (error) {
         console.log(error);
-        res.status(500).send('Error to send email')
+        res.status(500).json({status: 'ERROR', message: 'Error to send email'})
     }
 }
 
