@@ -10,7 +10,7 @@ app.use(cors())
 app.post('/', emailService.sendEmail)
 
 app.get('/', (req,res)=> {
-    res.json({status: 'SUCESS', message: 'API-CONTACT-US'})
+    res.json({status: 'SUCCESS', message: 'API-CONTACT-US'})
 })
 
 app.listen(port, () =>{

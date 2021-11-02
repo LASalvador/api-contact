@@ -29,7 +29,7 @@ const sendEmail = async (req, res) => {
         info = await sender.sendMail(mailOptions);
         emailMessage = "Message sent: " + info.messageId
         console.log(emailMessage);
-        res.json({status: 'SUCESS', message: emailMessage})
+        res.json({status: 'SUCCESS', message: emailMessage})
     } catch (error) {
         console.log(error);
         res.status(500).json({status: 'ERROR', message: 'Error to send email'})
